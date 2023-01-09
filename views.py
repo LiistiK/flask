@@ -9,8 +9,8 @@ class AdView(MethodView):
     def get(self, id_ad: int):
         with Session() as session:
             ad = session.query(AdModel).filter(AdModel.id == id_ad).first()
-             if ad is None:
-                raise HTTPError(404, 'error'))
+            if ad is None:
+                raise HTTPError(404, 'error')
             return jsonify({
                 'id': ad.id,
                 'title': ad.title,
